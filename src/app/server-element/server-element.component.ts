@@ -12,6 +12,7 @@ import {
   OnDestroy,
   ViewChild,
   ElementRef,
+  ContentChild,
 } from '@angular/core';
 
 @Component({
@@ -33,6 +34,7 @@ export class ServerElementComponent
   @Input('srvElement') element: { type: string; name: string; content: string };
   @Input() name: string;
   @ViewChild('heading', { static: true }) header: ElementRef;
+  @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef;
 
   constructor() {
     console.log(`🔎 | server-element | constructor`);
@@ -48,6 +50,10 @@ export class ServerElementComponent
     console.log(
       `🔎 | server-element | ngOnInit > header`,
       this.header.nativeElement.textContent
+    );
+    console.log(
+      `🔎 | server-element | ngOnInit > paragraph`,
+      this.paragraph.nativeElement.textContent
     );
   }
 
@@ -68,6 +74,10 @@ export class ServerElementComponent
     console.log(
       `🔎 | server-element | ngAfterViewInit > header`,
       this.header.nativeElement.textContent
+    );
+    console.log(
+      `🔎 | server-element | ngAfterViewInit > paragraph`,
+      this.paragraph.nativeElement.textContent
     );
   }
 
